@@ -1,6 +1,12 @@
 -- Only required if you have packer configured as `opt`
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
 vim.cmd [[packadd packer.nvim]]
-return require("packer").startup(function()
+return require("packer").startup({function()
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
@@ -192,7 +198,7 @@ return require("packer").startup(function()
     }
 
     use {
-        "~/src/nvim_plugins/cmp-git",
+        "petertriho/cmp-git",
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require("cmp_git").setup {}
@@ -231,6 +237,11 @@ return require("packer").startup(function()
             require "neva.plugins.zk-nvim"
         end,
     }
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 
     -- TODO: Maybe Try this again at some point
     -- use {
@@ -268,4 +279,6 @@ return require("packer").startup(function()
     -- ** https://github.com/btford/write-good -- null_ls.builtins.diagnostics.write_good,
     -- ** https://www.nongnu.org/chktex/ -- null_ls.builtins.diagnostics.chktex
     --
-end)
+end, config = {
+    compile_path = "~/.dotfiles/dots-nvim/nvim/.config/nvim/plugin/packer_compiled.lua"
+}})
