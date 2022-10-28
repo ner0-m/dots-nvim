@@ -10,7 +10,6 @@ local open_dir = function(config)
 
     -- ONLY when it's specifically set to false (nil doesn't count)
     if config.previewer == false then
-        print "Table has previewer"
         opt.previewer = false
     end
 

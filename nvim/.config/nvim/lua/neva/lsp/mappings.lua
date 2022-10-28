@@ -15,7 +15,7 @@ function M.format(bufnr)
             vim.lsp.buf.format(opts)
         end
     )
-    buf_map(bufnr, "v", "<leader>xf", vim.lsp.buf.range_formatting)
+    -- buf_map(bufnr, "v", "<leader>xf", vim.lsp.buf.range_formatting)
 end
 
 function M.init(client, bufnr)

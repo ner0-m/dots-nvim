@@ -97,9 +97,7 @@ vim.keymap.set("n", "<leader>lS", builtin.lsp_workspace_symbols, opts)
 vim.keymap.set("n", "<leader>lgi", builtin.lsp_implementations, opts)
 vim.keymap.set("n", "<leader>lgd", builtin.lsp_definitions, opts)
 -- TODO: find replacements
--- vim.keymap.set("n", "<leader>la", builtin.code_actions, opts)
--- vim.keymap.set("n", "<leader>ldw", builtin.lsp_workspace_diagnostics, opts)
--- vim.keymap.set("n", "<leader>ldd", builtin.lsp_document_diagnostics, opts)
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 
 -- Git pickers
 vim.keymap.set("n", "<leader>gc", builtin.git_commits, opts)

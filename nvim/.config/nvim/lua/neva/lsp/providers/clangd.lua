@@ -1,12 +1,12 @@
 return {
     cmd = {
-        "/home/david/src/llvm-project/build/bin/clangd",
+        "clangd",
         "--background-index",
         "--clang-tidy",
         "--header-insertion=iwyu",
         "--inlay-hints",
         "--cross-file-rename",
-        "--log=verbose",
+        -- "--log=verbose",
     },
     filetypes = { "c", "cpp", "objc", "objcpp", "cu", "cuh", "cuda" },
         capabilities = {

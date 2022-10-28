@@ -5,10 +5,10 @@ local config = {
     lsp = {
         servers = {
             clangd = {
-                format = false,
+                format = true,
             },
             cmake = {
-                format = false,
+                format = true,
             },
             sumneko_lua = {
                 format = false,
